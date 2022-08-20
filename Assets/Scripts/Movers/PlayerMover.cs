@@ -10,8 +10,8 @@ public class PlayerMover : MonoBehaviour
 
     public void Move(float xDelta)
     {        
-        _player.transform.localPosition += new Vector3(xDelta * Time.deltaTime * _moveSpeedScale, 0, 0);
-        _player.transform.localPosition = new Vector3(Mathf.Clamp(_player.transform.localPosition.x, _maxLeftXPosition, _maxRightXPosition),
-            _player.transform.localPosition.y, _player.transform.localPosition.z);
+        _player.transform.position += new Vector3(xDelta * Time.deltaTime * _moveSpeedScale, 0, 0);
+        _player.transform.position = new Vector3(Mathf.Clamp(_player.transform.position.x, _maxLeftXPosition, _maxRightXPosition),
+            _player.transform.position.y, _player.transform.position.z);
     }
 }

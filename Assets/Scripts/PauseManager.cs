@@ -3,8 +3,7 @@ using System.Collections.Generic;
 
 public class PauseManager : MonoBehaviour, IPauseHandler
 {
-    private readonly List<IPauseHandler> _handlers =
-        new List<IPauseHandler>();
+    private readonly List<IPauseHandler> _handlers = new List<IPauseHandler>();
 
     public bool IsPaused { get; private set; }
     public static PauseManager Instance { get; private set; }

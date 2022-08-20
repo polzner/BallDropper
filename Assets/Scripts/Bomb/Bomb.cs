@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour, IDamagable
 {
+    [SerializeField] private Rigidbody _headBlock;
+    [SerializeField] private float _force = 200f;
     [SerializeField] private ParticleSystem _explodeEffect;
     [SerializeField] private float _delay = 0.10f;
 
@@ -29,7 +31,11 @@ public class Bomb : MonoBehaviour, IDamagable
         foreach (Collider collider in colliders)
         {
             if (collider.gameObject.TryGetComponent(out IDamagable damageble))
+            {
                 damageble.Accept(damagebleVisitor);
+            }
         }
+
+        _headBlock.AddForce(Vector3.down * _force, ForceMode.VelocityChange);
     }
 }

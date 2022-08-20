@@ -5,6 +5,7 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private ObjectsPool _enemyPool;
     [SerializeField] private float _maxTime;
+    [SerializeField] private float _minTime;
     [SerializeField] private Transform _minPoint;
     [SerializeField] private Transform _maxPoint;
 
@@ -12,10 +13,10 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(SpawnRoutine(_maxTime));
+        StartCoroutine(SpawnRoutine(_maxTime, _minTime));
     }
 
-    private IEnumerator SpawnRoutine(float maxTime)
+    private IEnumerator SpawnRoutine(float maxTime, float minTime)
     {
         while (!_isPaused)
         {
@@ -26,7 +27,7 @@ public class EnemySpawner : MonoBehaviour
                     _minPoint.position.y, _minPoint.position.z);
             }
 
-            yield return new WaitForSeconds(Random.Range(0, maxTime));
+            yield return new WaitForSeconds(Random.Range(minTime, maxTime));
         }
     }
 }

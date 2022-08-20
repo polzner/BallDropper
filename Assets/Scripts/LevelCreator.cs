@@ -5,6 +5,8 @@ using UnityEngine;
 public class LevelCreator : MonoBehaviour
 {
     [SerializeField] private GameObject _startBlock;
+    [SerializeField] private Transform _playerStartPosition;
+    [SerializeField] private GameObject _player;
     [SerializeField] private GameObject _finishBlock;
     [SerializeField] private GameObject _blockPrefab;
     [SerializeField] private GameObject _playerBlock;
@@ -33,6 +35,7 @@ public class LevelCreator : MonoBehaviour
 
         _upperBlock = block;
         _playerBlock.transform.position = currentPosition;
+        _player.transform.position = _playerStartPosition.position;
 
         currentPosition += yOffset * _distanceToFinish + (Vector3.up * _startBlock.GetComponent<Collider>().bounds.size.y)
             + (Vector3.forward * _zOffset);
