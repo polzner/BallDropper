@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -13,6 +14,8 @@ public class BlockSpawner : MonoBehaviour
     [SerializeField] private float _spawnOffset = 0.2f;
     [SerializeField] private LevelCreator _levelCreator;
     [SerializeField] private AnimationCurve _curve;
+
+    public Action StartSpawn;
 
     private Transform _previousBlockTransform;
     private Vector3 _nextPosition;
@@ -32,6 +35,7 @@ public class BlockSpawner : MonoBehaviour
 
     public void Spawn()
     {
+        StartSpawn?.Invoke();
         StartCoroutine(MovePlayerBlockRoutine(_moveTime));
         StartCoroutine(SpawnBlockRoutine(_spawnDelay));
     }

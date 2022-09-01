@@ -18,6 +18,6 @@ public class Block : MonoBehaviour, IDamagable, IPauseHandler
 
     public void SetPaused(bool isPaused)
     {
-        _rigidbody.isKinematic = isPaused;
+        //_rigidbody.isKinematic = isPaused;
     }
 }

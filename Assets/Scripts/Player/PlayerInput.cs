@@ -6,7 +6,7 @@ public class PlayerInput : MonoBehaviour
 
     private bool _isPaused => PauseManager.Instance.IsPaused;
 
-    private void Update()
+    private void FixedUpdate()
     {
         if(_isPaused)
             return;

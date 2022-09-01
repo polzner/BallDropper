@@ -10,6 +10,7 @@ public class Finisher : MonoBehaviour
     [SerializeField] private CamerasPriorityChanger _camerasSwitcher;
     [SerializeField] private FinishedPlayerMover _mover;
     [SerializeField] private Transform _finishPoint;
+    [SerializeField] private float _delay = 0.3f;
     
     private bool _isFinished = false;
 
@@ -25,7 +26,7 @@ public class Finisher : MonoBehaviour
 
     private void Finish()
     {
-        StartCoroutine(DelayMoveRoutine(0.2f));
+        StartCoroutine(DelayMoveRoutine(_delay));
         _camerasSwitcher.SwitchCameras();
         _isFinished = true;
         ResetRigs(_rigs);
