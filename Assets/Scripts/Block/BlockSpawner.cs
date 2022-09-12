@@ -12,6 +12,7 @@ public class BlockSpawner : MonoBehaviour
     [SerializeField] private float _moveTime = 0.2f;
     [SerializeField] private float _spawnDelay = 0.1f;
     [SerializeField] private float _spawnOffset = 0.2f;
+    [SerializeField] private float _force;
     [SerializeField] private LevelCreator _levelCreator;
     [SerializeField] private AnimationCurve _curve;
 
@@ -70,5 +71,7 @@ public class BlockSpawner : MonoBehaviour
         GameObject block = Instantiate(_blockPrefab, blockPosition, Quaternion.identity, _blockContainer);
         block.GetComponent<Animation>().Play();
         _previousBlockTransform = block.transform;
+
+        _playerBlock.AddForce(Vector3.down * _force, ForceMode.VelocityChange);
     }
 }
